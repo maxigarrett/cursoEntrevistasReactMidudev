@@ -1,0 +1,19 @@
+body{
+  /* padding: 10px; */
+  border: 0;
+  background-color: #000;
+  color: #fff;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+img{
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
