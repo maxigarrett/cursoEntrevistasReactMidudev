@@ -59,6 +59,7 @@ function App() {
             placeholder="....search movies"
           />
           <button type="submit">Searc</button>
+          <span>{error}</span>
         </form>
       </header>
 
