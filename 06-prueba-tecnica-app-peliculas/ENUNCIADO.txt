@@ -3,6 +3,7 @@ crea una App para buscar peliculas.
 API a usar:
 -http://www.omdbapi.com
 -API_KEY: dfe97736
+https://www.omdbapi.com/?apikey=dfe97736&s=batman
 
 Requerimientos:
 

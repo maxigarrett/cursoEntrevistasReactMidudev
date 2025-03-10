@@ -1,17 +1,19 @@
-// import { useState } from "react";
-
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./App.css";
 import { Movies } from "./components/Movies";
 import { useMovies } from "./hooks/useMovies";
+import { useSearch } from "./hooks/useSearch";
 
 function App() {
-  const { mappedMovies } = useMovies();
-  const [query, setQuery] = useState();
-  const [error, setError] = useState();
+  const { search, error, updateSearch } = useSearch();
+  const { movies, getMovies } = useMovies({ search });
+
+  //si hay un error agrega una clase al input
+  const classNameInput = error ? "errorSearch" : "";
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    getMovies();
     // AL GET LE PASAMOS EL NAME DEL InPUT
     // const fields = new window.FormData(event.target);
     // const query = fields.get("queryMovie");
@@ -23,29 +25,14 @@ function App() {
     // const { queryMovie } = Object.fromEntries(
     //   new window.FormData(event.target)
     // );
-    console.log({ query });
   };
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
-    console.log(query);
+    //es mejor guardar primero  en variable el valor ya que es asincrono puede traer errores o bugs.
+    const newQuery = e.target.value;
+    updateSearch(newQuery); //actualiza el  earch que tenemos en el hook para mostrar mensaje
   };
 
-  useEffect(() => {
-    const regex = /^[^\d]/; //valida que no empiece con un numero
-    if (query === "") {
-      setError("debes ingresar una pelicula para buscar");
-      return;
-    }
-    if (!regex.test(query)) {
-      setError("no puedes buscar por un numero");
-      return;
-    }
-    if (query?.length < 3) {
-      setError("tienes que usar mas de tres letras para la busqueda");
-      return;
-    }
-  }, [query]);
   return (
     <div className="page">
       <header>
@@ -53,18 +40,20 @@ function App() {
 
         <form className="form" onSubmit={handleSubmit}>
           <input
+            className={classNameInput}
             onChange={handleChange}
             name="queryMovie"
             type="text"
             placeholder="....search movies"
+            value={search}
           />
           <button type="submit">Searc</button>
-          <span>{error}</span>
         </form>
       </header>
+      {error && <span className="errorSearch">{error}</span>}
 
       <main>
-        <Movies movies={mappedMovies} />
+        <Movies movies={movies} />
       </main>
     </div>
   );

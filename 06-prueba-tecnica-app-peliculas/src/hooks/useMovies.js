@@ -1,16 +1,14 @@
-import responseMovies from "../mocks/with-results.json";
+import { useState } from "react";
+import { searchMovies } from "../services/movies";
 
-export const useMovies = () => {
-    const movies = responseMovies.Search;
-    //mapeamos y cambiamos los valores de la api por nombres que nosotros  queremos para pasarle al compomente
-    const mappedMovies = movies?.map((movie) => {
-      return {
-        id: movie.imdbID,
-        title: movie.Title,
-        year: movie.Year,
-        poster: movie.Poster,
-      };
-    });
-  
-    return { movies, mappedMovies };
-  };
+
+
+export const useMovies = ({search}) => {
+  const[movies,setMovies]=useState([]);
+
+  const getMovies= async()=>{
+    const newMoives=await searchMovies({search})
+    setMovies(newMoives)
+  }
+  return {movies ,getMovies};
+};

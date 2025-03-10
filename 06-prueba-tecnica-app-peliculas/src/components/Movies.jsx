@@ -1,11 +1,9 @@
-// import withoutResults from "../mocks/no-results.json";
-
 const ListOfMovies = ({ movies }) => {
   if (!movies) return;
   return (
-    <ul>
+    <ul className="movies">
       {movies.map((movie) => (
-        <li key={movie.id}>
+        <li key={movie.id} className="movie">
           <h3>{movie.title}</h3>
           <p>{movie.year}</p>
           <img src={movie.poster} />
