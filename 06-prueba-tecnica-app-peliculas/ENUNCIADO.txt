@@ -16,3 +16,4 @@ Primer iteracion:
 -Evitar que haga la misma busqueda dos veces
 -Haz que la busqueda se haga automaticamente al escribir
 -Evitar que haga la busqueda continuamente al escribir (debounce)
+// https://github.com/angus-c/just?tab=readme-ov-file#just-debounce-it  intall  npm install just-debounce-it

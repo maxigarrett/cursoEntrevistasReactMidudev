@@ -47,8 +47,9 @@ input.errorSearch{
 }
 .movie img{
     border-radius: 3px;
+    height: 350px;
 }
 .movie h3{
     margin-bottom: 0;
-    height: 40%;
+    max-height: 30%;
 }
