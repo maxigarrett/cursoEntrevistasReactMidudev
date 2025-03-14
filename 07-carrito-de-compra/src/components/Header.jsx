@@ -1,10 +1,10 @@
 import { Filters } from "./Filters";
 
-export const Header = ({ changefilters }) => {
+export const Header = () => {
   return (
     <>
       <h1>React Shop </h1>
-      <Filters changefilters={changefilters} />
+      <Filters />
     </>
   );
 };

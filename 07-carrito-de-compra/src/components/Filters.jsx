@@ -1,15 +1,21 @@
-import { useState, useId } from "react";
+// import { useContext } from "react";
+// import { FilterContext } from "../context/filters";
+import { useFilters } from "../hooks/useFilters";
 import "./Filters.css";
-export const Filters = ({ changefilters }) => {
-  const [minPrice, setMinprice] = useState();
+import { useId } from "react";
+
+//podemos leer el contexto utilizando el usecontext o  utilizar el hook
+
+export const Filters = () => {
+  const { setFilters, filters } = useFilters();
+  // const { filters, setFilters } = useContext(FilterContext);
 
   //le agrega un valor dependiendo de la posicion que tenga dentro de la componetizacion
   const minPriceFilterID = useId();
   const categoryFilterID = useId();
 
   const handleFilterPrice = (e) => {
-    setMinprice(e.target.value);
-    changefilters((preValue) => {
+    setFilters((preValue) => {
       return {
         ...preValue,
         minPrice: e.target.value,
@@ -17,7 +23,7 @@ export const Filters = ({ changefilters }) => {
     });
   };
   const handleFilterCategory = (e) => {
-    changefilters((preValue) => {
+    setFilters((preValue) => {
       return {
         ...preValue,
         category: e.target.value,
@@ -35,8 +41,9 @@ export const Filters = ({ changefilters }) => {
           min="0"
           max="1000"
           onChange={handleFilterPrice}
+          value={filters.minPrice}
         />
-        <span>${minPrice}</span>
+        <span>${filters.minPrice}</span>
       </div>
       <div>
         <label htmlFor={categoryFilterID}>cateory</label>
