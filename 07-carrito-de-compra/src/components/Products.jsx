@@ -18,6 +18,7 @@ export const Products = ({ products }) => {
         <ul>
           {products.slice(0, 10).map((product) => {
             const isProductInCart = checkProductInCart(product);
+            const clasNameButtoCart = isProductInCart ? "deleteFromCart" : "";
             return (
               <li key={product.id}>
                 <img src={product.thumbnail} alt={product.title} />
@@ -28,6 +29,7 @@ export const Products = ({ products }) => {
                 </div>
                 <div>
                   <button
+                    className={clasNameButtoCart}
                     onClick={() =>
                       isProductInCart
                         ? removeFromCart(product)

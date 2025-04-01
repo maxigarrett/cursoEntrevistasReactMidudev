@@ -12,13 +12,15 @@ export const CartProvider = ({ children }) => {
       //structure clone
       const newCart = structuredClone(cart);
       newCart[productInCart].quantity += 1;
-      setCart(newCart);
+      //return para que salga de la funcion sino me sigue leyendo codigo abajo y aumenta el quantity pero me agrega otro producto igual
+      return setCart(newCart);
     }
     //primera vez que areamosun producto que no se repita
     //creamos la propiedad quantity
     setCart((prevalue) => [...prevalue, { ...product, quantity: 1 }]);
   };
   const clearCart = () => setCart([]);
+
   const removeFromCart = (product) => {
     setCart((prevStatus) =>
       prevStatus.filter((item) => item.id !== product.id)
