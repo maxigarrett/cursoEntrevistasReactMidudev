@@ -1,0 +1,54 @@
+.cart{
+    background-color: #000;
+    display: none;
+    padding: 32px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 150px;
+    max-height: 100vw;
+    overflow-y:auto;
+}
+.cart img{
+    aspect-ratio: 16/9;
+    width: 100%;
+}
+.cart li{
+    border-bottom: 1px solid #444;
+    padding-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+}
+.cart footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.cart footer button{
+    padding: 8px;
+}
+
+.cart-button{
+    background-color: #99f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 9999px;
+    height: 32px;
+    width: 32px;
+    padding: 4px;
+    position: fixed;
+    right: 8px;
+    top: 8px;
+    z-index: 99999;
+}
+
+.cart-button:hover{
+    scale: 1.1;
+}
+.cart-button ~ input:checked ~ .cart{
+    height: 100%;
+    display: block;
+}
