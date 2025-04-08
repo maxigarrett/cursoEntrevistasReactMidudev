@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState(initialProducts);
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
-  console.log(setProducts);
+  // console.log(setProducts);
 
   return (
     <CartProvider>
