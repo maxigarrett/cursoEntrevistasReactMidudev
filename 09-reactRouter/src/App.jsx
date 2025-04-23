@@ -1,32 +1,36 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import { EVENT } from "./const";
 import HomePage from "./pages/Home";
-import About from "./pages/About";
+import AboutPage from "./pages/About";
+import { Router } from "./Router";
+import Pages404 from "./pages/404";
+//IMPORTANTE
+//esta app esta echa sin REACT ROUTER DOM sino manualmente con fines didacticos
+
+//EXTRACION DE ROUTER
+const appRoutes = [
+  {
+    path: "/",
+    Component: HomePage,
+  },
+  {
+    path: "/about",
+    Component: AboutPage,
+  },
+  {
+    path: "/search/:query",
+    Component: () => <h1>search</h1>,
+  },
+];
 
 function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-
-  useEffect(() => {
-    const onLocationChange = () => setCurrentPath(window.location.pathname);
-
-    window.addEventListener(EVENT.PUSHSTATE, onLocationChange);
-
-    window.addEventListener(EVENT.POPSTATE, onLocationChange);
-
-    return () => {
-      window.addEventListener(EVENT.PUSHSTATE, onLocationChange);
-      window.addEventListener(EVENT.POPSTATE, onLocationChange);
-    };
-  }, []);
-
   // return <main>{currentPath === "/home" ? <HomePage /> : <About />}</main>;
   return (
     <main>
-      {currentPath === "/" && <HomePage />}
-      {currentPath === "/about" && <About />}
+      <Router routes={appRoutes} defaultComponent={Pages404} />
     </main>
   );
 }
 
 export default App;
+
+//agregrar al commit cambo de nombre del about y creacion de rutasde mejor manera sin el hook
