@@ -11,6 +11,7 @@ import { Servicios } from "./pages/Servicios";
 import { HomeServicios } from "./pages/HomeServicios";
 import { ServiciosGarantia } from "./pages/ServiciosGarantia";
 import { ServiciosLista } from "./pages/ServiciosLista";
+import { ServiciosDetalles } from "./pages/ServiciosDetalle";
 
 function App() {
   const initialProductos = [
@@ -18,7 +19,13 @@ function App() {
     { id: 2, name: "Product 2", price: 200 },
     { id: 3, name: "Product 3", price: 300 },
   ];
-  const [productos, _] = useState(initialProductos);
+  const initialServicios = [
+    { id: 1, name: "Servicio 1", price: 1000 },
+    { id: 2, name: "Servicio 2", price: 2000 },
+    { id: 3, name: "Servicio 3", price: 3000 },
+  ];
+  const [productos] = useState(initialProductos);
+  const [servicios] = useState(initialServicios);
 
   return (
     <>
@@ -45,7 +52,20 @@ function App() {
             <Route index element={<HomeServicios />} />
             <Route path="/servicios/garantia" element={<ServiciosGarantia />} />
             {/*en servicios le pasamos al LINK el valor 5 como parametro y lo capturamos en <Serviciosarantaia> dentro de pepe como el valor que tiene aca en route*/}
-            <Route path="/servicios/lista/:pepe" element={<ServiciosLista />} />
+            <Route
+              path="/servicios/lista/"
+              element={<ServiciosLista servicios={servicios} />}
+            />
+            {/* podemos acer caragr varios componentes a la vex dentro de element poniendo los fragments */}
+            <Route
+              path="/servicios/:id"
+              element={
+                <>
+                  <ServiciosLista servicios={servicios} />
+                  <ServiciosDetalles servicios={servicios} />
+                </>
+              }
+            ></Route>
           </Route>
 
           <Route path="/*" element={<Error404 />} />
