@@ -1,3 +1,9 @@
+import { AUTO_LANGUAGE, SUPORTED_LANGUAGES } from "./constants";
+
+export type Languages=keyof typeof SUPORTED_LANGUAGES
+export type AutoLanguage= typeof  AUTO_LANGUAGE
+export type FromLanguage= Languages | AutoLanguage //el que traduce no tiene para cambiar lenuajes asique sera auto o lo otros lenuajes
+
 export interface StateInitial {
     fromLanguage: string;
     toLanguage: string;
