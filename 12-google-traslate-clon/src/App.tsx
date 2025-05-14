@@ -17,7 +17,11 @@ function App() {
         <Row>
           <Col>
             {/*from*/}
-            <LanguagesSelected onChange={setFromLangguages} />
+            <LanguagesSelected
+              value={state.fromLanguage}
+              type="from"
+              onChange={setFromLangguages}
+            />
             {state.fromLanguage}
           </Col>
 
@@ -33,7 +37,11 @@ function App() {
 
           <Col>
             {/*TO*/}
-            <LanguagesSelected onChange={setToLangguages} />
+            <LanguagesSelected
+              value={state.toLanguage}
+              type="to"
+              onChange={setToLangguages}
+            />
             {state.toLanguage}
           </Col>
         </Row>
