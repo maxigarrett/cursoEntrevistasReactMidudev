@@ -5,6 +5,7 @@ import { useStore } from "./hooks/useStore";
 import { AUTO_LANGUAGE } from "./constants";
 import { ArrowIcon } from "./components/icons";
 import { LanguagesSelected } from "./components/LanguagesSelected";
+import { SectionType } from "./types.d";
 
 function App() {
   const { state, interchangeLanguages, setFromLangguages, setToLangguages } =
@@ -19,7 +20,7 @@ function App() {
             {/*from*/}
             <LanguagesSelected
               value={state.fromLanguage}
-              type="from"
+              type={SectionType.From}
               onChange={setFromLangguages}
             />
             {state.fromLanguage}
@@ -39,7 +40,7 @@ function App() {
             {/*TO*/}
             <LanguagesSelected
               value={state.toLanguage}
-              type="to"
+              type={SectionType.To}
               onChange={setToLangguages}
             />
             {state.toLanguage}
