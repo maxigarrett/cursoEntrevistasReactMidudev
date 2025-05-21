@@ -18,7 +18,6 @@ type Props =
     };
 
 export const LanguagesSelected = ({ onChange, value, type }: Props) => {
-  console.log(value);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     // console.log(e.target.value);
     onChange(e.target.value as Languages); //forzamos el tipado para que no de error

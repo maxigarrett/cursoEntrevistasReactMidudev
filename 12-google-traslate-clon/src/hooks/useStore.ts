@@ -5,7 +5,7 @@ import { AUTO_LANGUAGE } from "../constants";
 export const initialState: StateInitial = {
   fromLanguage: "auto",
   toLanguage: "en",
-  fromTexto: "",
+  fromText: "",
   result: "",
   loading: false,
 };
@@ -62,9 +62,9 @@ export const useStore = () => {
     dispatch({ type: "SET_FROM_LANGUAGE", payload: payload });
   const setToLangguages = (payload: Languages) =>
     dispatch({ type: "SET_TO_LANGUAGE", payload: payload });
-  const setFromText = (payload: Languages) =>
+  const setFromText = (payload: string) =>
     dispatch({ type: "SET_FROM_TEXT", payload: payload });
-  const setResult = (payload: Languages) =>
+  const setResult = (payload: string) =>
     dispatch({ type: "SET_RESULT", payload: payload });
 
   return {

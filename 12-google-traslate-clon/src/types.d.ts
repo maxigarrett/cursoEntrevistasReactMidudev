@@ -7,7 +7,7 @@ export type FromLanguage = Languages | AutoLanguage; //el que traduce no tiene p
 export interface StateInitial {
   fromLanguage: FromLanguage;
   toLanguage: Languages;
-  fromTexto: string;
+  fromText: string;
   result: string;
   loading: boolean;
 }
